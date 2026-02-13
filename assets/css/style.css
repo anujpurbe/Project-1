@@ -1,0 +1,1068 @@
+body.menu-page {
+  background-color: #585252;
+}
+
+/* ===============================
+   Global Reset & Font
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* ✅ SMOOTH TRANSITIONS */
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+
+  /* ✅ smooth page + dark mode */
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4; /* ONE uniform background */
+}
+
+.page-content {
+  flex: 1;
+  background-color: #1f1f1f; /* SAME as body */
+}
+/* ===============================
+   Header (All Pages)
+================================ */
+.header {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 16px 20px;
+}
+
+.header h1 {
+  font-size: 32px;
+}
+
+.header p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+/* ===============================
+   MAIN NAVIGATION BAR (NO BOOTSTRAP CONFLICT)
+================================ */
+.main-navbar {
+  background-color: #ff6600;
+  padding: 8px 0;
+}
+
+/* Inner container controls spacing */
+.nav-inner {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.main-navbar a {
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.main-navbar a:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Active page (NO underline) */
+.main-navbar a.active {
+  background-color: #fff;
+  color: #ff6600;
+  border-radius: 4px;
+}
+
+.main-navbar a {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+/* ===============================
+   Hero Section (Home Page)
+================================ */
+.hero {
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h2 {
+  font-size: 32px;
+}
+
+.hero p {
+  margin: 15px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 500px;
+  margin: 15px auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   Button
+================================ */
+.btn {
+  margin-top: 15px;
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #ff6600;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #e65c00;
+  transform: scale(1.05);
+}
+
+button,
+.btn,
+.checkout-btn,
+.place-order-btn {
+  transition:
+    background-color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   Content Section
+================================ */
+.content {
+  margin: 30px auto;
+  padding: 40px 30px;
+  max-width: 800px;
+  text-align: center;
+  line-height: 1.6;
+  background-color: #fafafa;
+  border-radius: 6px;
+}
+
+.content h2 {
+  margin-bottom: 15px;
+}
+
+.content p {
+  color: #555;
+}
+
+/* ===============================
+   Menu Section
+================================ */
+.menu {
+  padding: 40px 20px 30px;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.menu h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+/* Menu Grid */
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Menu Card */
+.menu-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 300px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.menu-card h3 {
+  margin: 15px 0 5px;
+}
+
+.menu-card p {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.menu-card,
+.cart > *,
+.cart-box,
+.review-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ===============================
+   Footer
+================================ */
+.footer {
+  background-color: #222;
+  color: #bbb;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  margin-top: 0px;
+}
+
+/* ===============================
+   Mobile Responsiveness
+================================ */
+@media (max-width: 768px) {
+
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .main-navbar a {
+    font-size: 14px;
+  }
+
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .hero-img {
+    max-width: 90%;
+  }
+}
+
+.about-img {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   Contact Form Styling
+================================ */
+.contact-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 5px rgba(255, 102, 0, 0.3);
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form button {
+  align-self: center;
+}
+
+/* Contact page background */
+.contact-bg {
+  background-image: url("images/contact-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+    display: flex;
+  justify-content: center;
+}
+
+/* White overlay for readability */
+.contact-bg .content {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+}
+
+.content h2 {
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 12px;
+}
+
+.contact-bg {
+  margin-bottom: 0;
+  padding-bottom: 80px;
+}
+
+/* ===============================
+   Reviews Section
+================================ */
+.reviews {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.reviews h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.reviews-sub {
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.review-card {
+  background: #fafafa;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.review-text {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.review-card h4 {
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.review-card span {
+  color: #ff6600;
+  font-size: 18px;
+}
+.review-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #ff6600;
+}
+
+/* Add Review Form */
+.add-review {
+  padding: 60px 20px;
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.add-review h2 {
+  margin-bottom: 25px;
+}
+
+.add-review form {
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.add-review input,
+.add-review textarea,
+.add-review select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-review textarea {
+  resize: none;
+  height: 100px;
+}
+
+.add-review button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-review button:hover {
+  background: #e65c00;
+}
+
+.menu-card label {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.menu-card select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.menu-card button {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.menu-card button:hover {
+  background-color: #e65c00;
+}
+
+.menu-card .total {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ===== CATEGORY TABS ===== */
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.menu-tabs .tab {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #eee;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menu-tabs .tab.active {
+  background: #ff6600;
+  color: white;
+}
+
+
+.cart {
+  background: #fff;
+  padding: 30px 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.cart h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart h3 {
+  text-align: right;
+  margin-top: 15px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.social-icons a {
+  color: #bbb;
+  font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Brand Colors on Hover */
+.social-icons a:nth-child(1):hover { color: #E1306C; } /* Instagram */
+.social-icons a:nth-child(2):hover { color: #1877F2; } /* Facebook */
+.social-icons a:nth-child(3):hover { color: #FF0000; } /* YouTube */
+.social-icons a:nth-child(4):hover { color: #FFFC00; } /* Snapchat */
+
+.cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-count {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;
+  right: -10px;
+}
+.cart button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart button:hover {
+  background: #218838;
+}
+
+.cart-box {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+.cart-row {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.cart-row button {
+  background: #aa1f1f;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+
+.cart-badge {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+/* CART SUMMARY BOX */
+.cart-box {
+  max-width: 360px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* Cart title */
+.cart-box h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Total text */
+.cart-total-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Total amount highlight */
+.cart-total-text span {
+  display: block;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6600;
+  margin-top: 6px;
+}
+
+/* Checkout button */
+.checkout-btn {
+  background: #ff6600;
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.checkout-btn:disabled {
+  background: #ccc;
+}
+
+
+/* Hover effect */
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255,102,0,0.4);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1; /* THIS pushes footer down */
+}
+
+.footer {
+  background: #1f1f1f;
+  color: #ccc;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: auto;
+}
+
+.order-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+#orderItems li {
+  background: #f7f7f7;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.total-amount {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.total-amount span {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff6600;
+  margin-top: 6px;
+}
+
+.place-order-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #28a745, #34c759);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.place-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(40,167,69,0.35);
+}
+
+.order-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+}
+
+/* ===============================
+   DARK MODE TOGGLE
+================================ */
+.dark-toggle {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: white;
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .header,
+body.dark .footer {
+  background-color: #1e1e1e;
+}
+
+body.dark .main-navbar {
+  background-color: #333;
+}
+
+body.dark .content,
+body.dark .menu-card,
+body.dark .cart {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+body.dark .menu-card p,
+body.dark .content p {
+  color: #ccc;
+}
+
+body.dark .btn,
+body.dark .menu-card button,
+body.dark .place-order-btn {
+  background-color: #ff6600;
+}
+
+/* ===============================
+   DARK MODE TEXT FIX (IMPORTANT)
+================================ */
+
+/* Default readable text */
+body.dark,
+body.dark p,
+body.dark li,
+body.dark span,
+body.dark label {
+  color: #e0e0e0;
+}
+
+/* Headings */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+  color: #ffffff;
+}
+
+/* Muted text (was #555, #666 etc.) */
+body.dark .content p,
+body.dark .menu-card p,
+body.dark .review-text,
+body.dark .reviews-sub {
+  color: #cccccc;
+}
+
+/* Price highlight */
+body.dark .price {
+  color: #ff9800;
+}
+
+/* Links */
+body.dark a {
+  color: #ffb74d;
+}
+
+/* Cart items */
+body.dark .cart li {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+/* Inputs & textarea text */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444;
+}
+
+/* Placeholder text */
+body.dark ::placeholder {
+  color: #aaaaaa;
+}
+
+/* ======================================
+   DARK MODE — ORDER SUMMARY & CHECKOUT
+   (FINAL OVERRIDE — DO NOT MOVE)
+====================================== */
+
+/* Cart / Checkout container */
+body.dark .cart,
+body.dark .cart-box {
+  background-color: #1f1f1f !important;
+  color: #e0e0e0 !important;
+}
+
+/* Order summary list items */
+body.dark .cart li,
+body.dark #orderItems li {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-bottom: 1px solid #444;
+}
+
+/* Headings inside checkout */
+body.dark .cart h2,
+body.dark .cart h3,
+body.dark .cart-box h3,
+body.dark .cart-box h4 {
+  color: #ffffff !important;
+}
+
+/* Total amount highlight */
+body.dark #orderTotal,
+body.dark .cart-total-text span {
+  color: #ff9800 !important;
+}
+
+/* Buttons */
+body.dark .place-order-btn,
+body.dark .checkout-btn {
+  background-color: #ff6600 !important;
+  color: #ffffff !important;
+}
+
+/* Empty cart message */
+body.dark .cart li:only-child {
+  background-color: transparent !important;
+  color: #cccccc !important;
+}
+
+/* ======================================
+   DARK MODE — GLOBAL PAGE FIX
+   (HOME + LOGIN + ALL PAGES)
+====================================== */
+
+/* Main sections */
+body.dark .hero,
+body.dark .content,
+body.dark .reviews,
+body.dark .add-review,
+body.dark .login-page,
+body.dark .login-box,
+body.dark .review-card,
+body.dark .add-review form {
+  background-color: #1f1f1f !important;
+  color: #e0e0e0 !important;
+}
+
+/* Text inside those sections */
+body.dark .hero p,
+body.dark .content p,
+body.dark .review-text,
+body.dark .reviews-sub,
+body.dark .login-box p,
+body.dark .add-review p {
+  color: #cccccc !important;
+}
+
+/* Headings everywhere */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+  color: #aa9898 !important;
+}
+
+/* Inputs & forms (login, contact, review) */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+/* Placeholder text */
+body.dark ::placeholder {
+  color: #aaaaaa !important;
+}
+
+/* Review cards */
+body.dark .review-card {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important;
+}
+
+/* ======================================
+   DARK MODE — FOOTER SEPARATION FIX
+====================================== */
+
+/* Footer in dark mode */
+body.dark .footer {
+  background-color: #0f0f0f;   /* darker than body */
+  border-top: 1px solid #2a2a2a;
+}
+
+/* Optional: footer text slightly muted */
+body.dark .footer p {
+  color: #aaaaaa;
+}
+
+/* Social icons contrast */
+body.dark .social-icons a {
+  color: #888;
+}
+
+body.dark .social-icons a:hover {
+  color: #ff9800;
+}
+
+body.dark .footer {
+  background: linear-gradient(to top, #0f0f0f, #1a1a1a);
+}
+
+body {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}

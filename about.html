@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | FoodieHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="nav-inner">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+<a href="menu.html">
+  Menu <span id="cartCount" class="cart-badge">0</span>
+</a>
+
+
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>About Us</h1>
+    <p>Get to know our story and passion for food</p>
+  </header>
+
+  <!-- About Section -->
+  <section class="content">
+    <h2>Welcome to FoodieHub</h2>
+    <img src="assets/images/about.jpg" alt="Our kitchen and chefs" class="about-img">
+
+
+    <p>
+      Foolish Coder Restaurant was founded with a simple mission — to serve
+      delicious, high-quality food prepared with fresh ingredients and care.
+      We believe that good food creates good memories and brings people together.
+    </p>
+
+    <p>
+      Our kitchen is driven by passion, creativity, and a strong commitment
+      to taste and hygiene. Every dish on our menu is thoughtfully prepared
+      to ensure consistency, rich flavors, and customer satisfaction.
+    </p>
+
+    <p>
+      Whether you are visiting us for a quick meal, a family gathering,
+      or a casual dining experience, we aim to provide warm service and
+      food that feels comforting and satisfying.
+    </p>
+
+    <p>
+      At Foolish Coder Restaurant, our customers are at the heart of everything
+      we do. Your trust inspires us to continuously improve and deliver
+      better experiences every day.
+    </p>
+
+    <p><b>Thank you for choosing us — we look forward to serving you!</b></p>
+  </section>
+
+  <!-- Footer -->
+<footer class="footer">
+  <p>© 2026 FoodieHub Restaurant. All rights reserved.</p>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://www.snapchat.com/" target="_blank" aria-label="Snapchat">
+      <i class="fab fa-snapchat-ghost"></i>
+    </a>
+  </div>
+</footer>
+<script>
+const toggleBtn = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+<script>
+(function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.getElementById("cartCount");
+
+  if (!badge) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+  badge.textContent = totalQty;
+})();
+</script>
+<script type="module" src="assets/js/firebase.js"></script>
+
+
+<script src="assets/js/cart.js" defer></script>
+
+
+
+
+</body>
+</html>

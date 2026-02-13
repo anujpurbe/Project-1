@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodieHub | Online Food Ordering</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<nav class="main-navbar">
+  <div class="nav-inner">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+<a href="menu.html">
+  Menu <span id="cartCount" class="cart-badge">0</span>
+</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+     <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+  </div>
+</nav>
+
+
+  <header class="header">
+    <h1>FoodieHub</h1>
+    <p>Delicious food made with love</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Welcome to Our Restaurant</h2>
+    <p>Experience the taste of fresh and delicious food.</p>
+    <img src="assets/images/hero-food.jpg" alt="Delicious food" class="hero-img">
+    <a href="menu.html" class="btn">View Menu</a>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content">
+    <h2>Why Choose Us?</h2>
+    <p>
+      We serve high-quality food using fresh ingredients.
+      Our chefs ensure every dish tastes amazing.
+    </p>
+  </section>
+<!-- Reviews Section -->
+<section class="reviews">
+  <h2>What Our Customers Say</h2>
+  <p class="reviews-sub">Real experiences from food lovers</p>
+
+  <div class="review-cards">
+
+    <div class="review-card">
+      <img src="assets/images/reviews/user1.jpg" alt="Customer">
+      <p class="review-text">
+        “Amazing food quality and taste. The biryani is a must-try!”
+      </p>
+      <h4>Roshan Chaurasiya</h4>
+      <span>⭐⭐⭐⭐⭐</span>
+    </div>
+
+    <div class="review-card">
+      <img src="assets/images/reviews/user2.jpg" alt="Customer">
+      <p class="review-text">
+        “Clean place, friendly staff, and quick service. Loved it.”
+      </p>
+      <h4>Image Shah</h4>
+      <span>⭐⭐⭐⭐</span>
+    </div>
+
+    <div class="review-card">
+      <img src="assets/images/reviews/user3.jpg" alt="Customer">
+      <p class="review-text">
+        “Best budget-friendly restaurant near campus.”
+      </p>
+      <h4>Prabin Yadav</h4>
+      <span>⭐⭐⭐⭐⭐</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Add Review Section -->
+<section class="add-review">
+  <h2>Add Your Review</h2>
+
+  <form onsubmit="submitReview(event)">
+    <input type="text" placeholder="Your Name" required>
+    <textarea placeholder="Write your review..." required></textarea>
+
+    <select required>
+      <option value="">Rating</option>
+      <option>⭐⭐⭐⭐⭐</option>
+      <option>⭐⭐⭐⭐</option>
+      <option>⭐⭐⭐</option>
+      <option>⭐⭐</option>
+      <option>⭐</option>
+    </select>
+
+    <button type="submit">Submit Review</button>
+  </form>
+</section>
+
+
+  <!-- Footer -->
+<footer class="footer">
+  <p>© 2026 FoodieHub Restaurant. All rights reserved.</p>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://www.snapchat.com/" target="_blank" aria-label="Snapchat">
+      <i class="fab fa-snapchat-ghost"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+function submitReview(e) {
+  e.preventDefault();
+  alert("Thank you for your review! 😊");
+  e.target.reset();
+}
+</script>
+
+<script>
+const toggleBtn = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+<script>
+(function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.getElementById("cartCount");
+
+  if (!badge) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+  badge.textContent = totalQty;
+})();
+</script>
+
+
+
+<script src="assets/js/cart.js" defer></script>
+
+<script type="module" src="assets/js/firebase.js"></script>
+<script>
+  authGuard();
+</script>
+
+
+
+</body>
+</html>

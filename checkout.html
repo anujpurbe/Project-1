@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation | FoodieHubt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="menu-page">
+  <div class="layout">
+
+<!-- NAVBAR -->
+<nav class="main-navbar">
+  <div class="nav-inner">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html">
+      Menu <span id="cartCount" class="cart-badge">0</span>
+    </a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="header">
+  <h1>Order Confirmed 🎉</h1>
+  <p>Thank you for ordering from FoodieHub Resturant</p>
+</header>
+
+<!-- ORDER SUMMARY -->
+<section class="cart">
+ <h2 class="order-title">🧾 Order Summary</h2>
+
+
+  <ul id="orderItems"></ul>
+
+<h3 class="total-amount">
+  Total Amount
+  <span id="orderTotal">₹0</span>
+</h3>
+
+
+<button type="button" id="placeOrderBtn" class="place-order-btn">
+  Place Order
+</button>
+<p class="secure-text">
+  🔒 Secure checkout • Pay on delivery
+</p>
+
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 FoodieHub Restaurant. All rights reserved.</p>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.snapchat.com/" target="_blank" aria-label="Snapchat">
+      <i class="fab fa-snapchat-ghost"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function renderCheckout() {
+  const cart = getCart();
+  const summaryBox = document.getElementById("orderItems");
+  const totalBox = document.getElementById("orderTotal");
+
+  summaryBox.innerHTML = "";
+  let grandTotal = 0;
+
+  if (cart.length === 0) {
+    summaryBox.innerHTML = "<li>Your cart is empty.</li>";
+    totalBox.textContent = "₹0";
+    return;
+  }
+
+  cart.forEach(item => {
+    const itemTotal = item.price * item.qty;
+    grandTotal += itemTotal;
+
+    const li = document.createElement("li");
+    li.textContent = `${item.name} × ${item.qty} = ₹${itemTotal}`;
+    summaryBox.appendChild(li);
+  });
+
+  totalBox.textContent = "₹" + grandTotal;
+}
+
+document.getElementById("placeOrderBtn").addEventListener("click", () => {
+  const cart = getCart();
+
+  if (cart.length === 0) {
+    alert("❌ Your cart is empty!");
+    return;
+  }
+
+  alert("🎉 Order placed successfully!");
+  localStorage.removeItem("cart");
+
+  // redirect after user clicks OK
+  window.location.href = "index.html";
+});
+
+renderCheckout();
+</script>
+
+
+<!-- CART BADGE -->
+
+  <script>
+const toggleBtn = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+<script>
+(function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.getElementById("cartCount");
+
+  if (!badge) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+  badge.textContent = totalQty;
+})();
+</script>
+<script type="module" src="assets/js/firebase.js"></script>
+<script>
+  authGuard();
+</script>
+
+
+
+
+
+
+<script src="assets/js/cart.js" defer></script>
+
+
+
+</div>
+</body> 
+</html>

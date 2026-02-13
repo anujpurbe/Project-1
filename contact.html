@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | FoodieHub</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="nav-inner">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+<a href="menu.html">
+  Menu <span id="cartCount" class="cart-badge">0</span>
+</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="login.html">Login</a>
+       <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you</p>
+  </header>
+
+  <!-- Contact Content -->
+<section class="contact-bg">
+  <section class="content">
+    <h2>Get in Touch</h2>
+
+    <p>
+      Have a question, feedback, or want to get in touch with us?
+      Feel free to contact FoodieHub Restaurant — we are always happy to serve you.
+    </p>
+
+    <p>
+      <b>Address:</b> Amrita Vishwa Vidyapeetham Campus Area,  
+      Vengal Village, Thiruvallur District,  
+      Chennai, Tamil Nadu, India  
+      <br><br>
+      <b>Phone:</b> +91 9310447478  
+      <br>
+      <b>Email:</b> ch.sc.u4cse25174@ch.students.amrita.edu  
+      <br>
+      <b>Opening Hours:</b> Mon – Sun, 9:00 AM – 10:00 PM
+    </p>
+
+    <h3 style="margin-top: 30px;">Send Us a Message</h3>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <h3 style="margin-top: 40px;">Find Us Here</h3>
+
+    <!-- Google Map -->
+    <iframe
+      src="https://www.google.com/maps?q=Amrita%20Vishwa%20Vidyapeetham%20Chennai%20Campus&output=embed"
+      width="100%"
+      height="350"
+      style="border:0; border-radius: 8px; margin-top: 15px;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+
+  </section>
+</section>
+  <!-- Footer -->
+<footer class="footer">
+  <p>© 2026 FoodieHub Restaurant. All rights reserved.</p>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://www.snapchat.com/" target="_blank" aria-label="Snapchat">
+      <i class="fab fa-snapchat-ghost"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+const toggleBtn = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+<script>
+(function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.getElementById("cartCount");
+
+  if (!badge) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+  badge.textContent = totalQty;
+})();
+</script>
+<script type="module" src="assets/js/firebase.js"></script>
+
+
+<script src="assets/js/cart.js" defer></script>
+
+
+
+
+</body>
+</html>
