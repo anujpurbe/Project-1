@@ -11,6 +11,9 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff5722">
+
 </head>
 
 <body class="menu-page">
@@ -21,11 +24,16 @@
   <div class="nav-inner">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="menu.html">
-      Menu <span id="cartCount" class="cart-badge">0</span>
-    </a>
+<a href="menu.html">
+Menu
+</a>
+
+<a href="cart.html" class="cart-link">
+🛒 Cart <span id="cartCount">0</span>
+</a>
     <a href="contact.html">Contact</a>
     <a href="login.html">Login</a>
+    <a href="#" id="logoutBtn">Logout</a>
     <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
   🌙
 </button>
@@ -178,8 +186,25 @@ toggleBtn.addEventListener("click", () => {
 
 
 <script src="assets/js/cart.js" defer></script>
+<script>
+document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
+  e.preventDefault();
 
+  try {
+    await logoutUser();
+    window.location.href = "login.html";
+  } catch (err) {
+    alert("Logout failed");
+  }
+});
+</script>
+<script>
+  let cartCount = document.getElementById("cart-count");
 
+function updateCartCount(count){
+cartCount.innerText = count;
+}
+</script>
 
 </div>
 </body> 

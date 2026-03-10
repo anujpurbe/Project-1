@@ -8,6 +8,9 @@
   <title>Menu | FoodieHub</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff5722">
+
 </head>
 
 <body class="menu-page">
@@ -18,11 +21,17 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
 
-    <a href="menu.html">
-      Menu <span id="cartCount" class="cart-badge">0</span>
-    </a>
+<a href="menu.html">
+Menu
+</a>
+
+<a href="cart.html" class="cart-link">
+🛒 Cart <span id="cartCount">0</span>
+</a>
     <a href="contact.html">Contact</a>
     <a href="login.html">Login</a>
+    <a href="#" id="logoutBtn">Logout</a>
+
      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
   🌙
 </button>
@@ -39,224 +48,136 @@
 <section class="menu">
   <h2>Our Popular Menu</h2>
  
-<div class="menu-tabs">
-  <button class="tab active" onclick="filterMenu('all')">All</button>
-  <button class="tab" onclick="filterMenu('starter')">Starters</button>
-  <button class="tab" onclick="filterMenu('main')">Main Course</button>
-  <button class="tab" onclick="filterMenu('dessert')">Desserts</button>
-</div>
+<button class="tab active" onclick="filterMenu('all',this)">All</button>
+<button class="tab" onclick="filterMenu('starter',this)">Starters</button>
+<button class="tab" onclick="filterMenu('main',this)">Main Course</button>
+<button class="tab" onclick="filterMenu('dessert',this)">Desserts</button>
 
 
   <div class="menu-items">
 
-    <!-- TEMPLATE ITEM (reused 10 times) -->
-    <!-- 1 -->
-    <div class="menu-card" data-category="main">
-      <img src="assets/images/biryani.jpg">
-      <h3>Chicken Biryani</h3>
-      <p class="price">₹180</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,180)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹180</p>
-      <button onclick="addToCart('Chicken Biryani',180,this)">Add to Cart</button>
-    </div>
-
-    <!-- 2 -->
-    <div class="menu-card" data-category="starter">
-      <img src="assets/images/pizza.jpg">
-      <h3>Cheese Pizza</h3>
-      <p class="price">₹230</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,230)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹230</p>
-      <button onclick="addToCart('Cheese Pizza',230,this)">Add to Cart</button>
-    </div>
-
-    <!-- 3 -->
-    <div class="menu-card" data-category="starter">
-      <img src="assets/images/burger.jpg">
-      <h3>Veg Burger</h3>
-      <p class="price">₹120</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,120)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹120</p>
-      <button onclick="addToCart('Veg Burger',120,this)">Add to Cart</button>
-    </div>
-
-    <!-- 4 -->
-    <div class="menu-card" data-category="main">
-      <img src="assets/images/pasta.jpg">
-      <h3>White Sauce Pasta</h3>
-      <p class="price">₹200</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,200)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹200</p>
-      <button onclick="addToCart('White Sauce Pasta',200,this)">Add to Cart</button>
-    </div>
-
-    <!-- 5 -->
-    <div class="menu-card" data-category="main">
-      <img src="assets/images/noodles.jpg">
-      <h3>Veg Noodles</h3>
-      <p class="price">₹150</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,150)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹150</p>
-      <button onclick="addToCart('Veg Noodles',150,this)">Add to Cart</button>
-    </div>
-
-    <!-- 6 -->
-    <div class="menu-card" data-category="main">
-      <img src="assets/images/friedrice.jpg">
-      <h3>Fried Rice</h3>
-      <p class="price">₹160</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,160)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹160</p>
-      <button onclick="addToCart('Fried Rice',160,this)">Add to Cart</button>
-    </div>
-
-    <!-- 7 -->
-    <div class="menu-card" data-category="starter">
-      <img src="assets/images/sandwich.jpg">
-      <h3>Grilled Sandwich</h3>
-      <p class="price">₹110</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,110)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹110</p>
-      <button onclick="addToCart('Grilled Sandwich',110,this)">Add to Cart</button>
-    </div>
-
-    <!-- 8 -->
-    <div class="menu-card" data-category="starter">
-      <img src="assets/images/momos.jpg">
-      <h3>Veg Momos</h3>
-      <p class="price">₹140</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,140)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹140</p>
-      <button onclick="addToCart('Veg Momos',140,this)">Add to Cart</button>
-    </div>
-
-    <!-- 9 -->
-    <div class="menu-card" data-category="starter">
-      <img src="assets/images/roll.jpg">
-      <h3>Paneer Roll</h3>
-      <p class="price">₹130</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,130)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹130</p>
-      <button onclick="addToCart('Paneer Roll',130,this)">Add to Cart</button>
-    </div>
-
-    <!-- 10 -->
-    <div class="menu-card" data-category="dessert">
-      <img src="assets/images/icecream.jpg">
-      <h3>Vanilla Ice Cream</h3>
-      <p class="price">₹90</p>
-
-      <label>Quantity</label>
-      <select class="qty" onchange="updateItemTotal(this,90)">
-        <option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
-
-      <p class="total">Total: ₹90</p>
-      <button onclick="addToCart('Vanilla Ice Cream',90,this)">Add to Cart</button>
-    </div>
-
-<!-- Item 11 -->
-<div class="menu-card" data-category="main">
-  <img src="assets/images/paneer-butter-masala.jpg" alt="Paneer Butter Masala">
-  <h3>Paneer Butter Masala</h3>
-  <p class="price">₹220</p>
-
-  <label>Quantity</label>
-  <select class="qty" onchange="updateItemTotal(this,220)">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-
-  <p class="total">Total: ₹220</p>
-  <button onclick="addToCart('Paneer Butter Masala', 220, this)">
-    Add to Cart
-  </button>
+<!-- 1 -->
+<div class="menu-card menu-item" data-id="1" data-name="Chicken Biryani" data-price="180" data-category="main" data-img="assets/images/biryani.jpg">
+<img src="assets/images/biryani.jpg">
+<h3>Chicken Biryani</h3>
+<p class="price">₹180</p>
+<div class="cart-btn"></div>
 </div>
 
-<!-- Item 12 -->
-<div class="menu-card" data-category="dessert">
-  <img src="assets/images/brownie.jpg" alt="Chocolate Brownie">
-  <h3>Chocolate Brownie</h3>
-  <p class="price">₹150</p>
-
-  <label>Quantity</label>
-  <select class="qty" onchange="updateItemTotal(this,150)">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-
-  <p class="total">Total: ₹150</p>
-  <button onclick="addToCart('Chocolate Brownie', 150, this)">
-    Add to Cart
-  </button>
+<!-- 2 -->
+<div class="menu-card menu-item" data-id="2" data-name="Cheese Pizza" data-price="230" data-category="starter" data-img="assets/images/pizza.jpg">
+<img src="assets/images/pizza.jpg">
+<h3>Cheese Pizza</h3>
+<p class="price">₹230</p>
+<div class="cart-btn"></div>
 </div>
 
+<!-- 3 -->
+<div class="menu-card menu-item" data-id="3" data-name="Veg Burger" data-price="120" data-category="starter" data-img="assets/images/burger.jpg">
+<img src="assets/images/burger.jpg">
+<h3>Veg Burger</h3>
+<p class="price">₹120</p>
+<div class="cart-btn"></div>
+</div>
 
-  </div>
+<!-- 4 -->
+<div class="menu-card menu-item" data-id="4" data-name="White Sauce Pasta" data-price="200" data-category="main" data-img="assets/images/pasta.jpg">
+<img src="assets/images/pasta.jpg">
+<h3>White Sauce Pasta</h3>
+<p class="price">₹200</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 5 -->
+<div class="menu-card menu-item" data-id="5" data-name="Veg Noodles" data-price="150" data-category="main" data-img="assets/images/noodles.jpg">
+<img src="assets/images/noodles.jpg">
+<h3>Veg Noodles</h3>
+<p class="price">₹150</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 6 -->
+<div class="menu-card menu-item" data-id="6" data-name="Fried Rice" data-price="160" data-category="main" data-img="assets/images/friedrice.jpg">
+<img src="assets/images/friedrice.jpg">
+<h3>Fried Rice</h3>
+<p class="price">₹160</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 7 -->
+<div class="menu-card menu-item" data-id="7" data-name="Grilled Sandwich" data-price="110" data-category="starter" data-img="assets/images/sandwich.jpg">
+<img src="assets/images/sandwich.jpg">
+<h3>Grilled Sandwich</h3>
+<p class="price">₹110</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 8 -->
+<div class="menu-card menu-item" data-id="8" data-name="Veg Momos" data-price="140" data-category="starter" data-img="assets/images/momos.jpg">
+<img src="assets/images/momos.jpg">
+<h3>Veg Momos</h3>
+<p class="price">₹140</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 9 -->
+<div class="menu-card menu-item" data-id="9" data-name="Paneer Roll" data-price="130" data-category="starter" data-img="assets/images/roll.jpg">
+<img src="assets/images/roll.jpg">
+<h3>Paneer Roll</h3>
+<p class="price">₹130</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 10 -->
+<div class="menu-card menu-item" data-id="10" data-name="Vanilla Ice Cream" data-price="90" data-category="dessert" data-img="assets/images/icecream.jpg">
+<img src="assets/images/icecream.jpg">
+<h3>Vanilla Ice Cream</h3>
+<p class="price">₹90</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 11 -->
+<div class="menu-card menu-item" data-id="11" data-name="Paneer Butter Masala" data-price="220" data-category="main" data-img="assets/images/paneer-butter-masala.jpg">
+<img src="assets/images/paneer-butter-masala.jpg">
+<h3>Paneer Butter Masala</h3>
+<p class="price">₹220</p>
+<div class="cart-btn"></div>
+</div>
+
+<!-- 12 -->
+<div class="menu-card menu-item" data-id="12" data-name="Chocolate Brownie" data-price="150" data-category="dessert" data-img="assets/images/brownie.jpg">
+<img src="assets/images/brownie.jpg">
+<h3>Chocolate Brownie</h3>
+<p class="price">₹150</p>
+<div class="cart-btn"></div>
+</div>
+
+</div>
+
 </section>
 
-<!-- CART -->
+<!-- FLOATING CART -->
+<div id="floatingCart">
 
-<div class="cart-box">
- <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+<div>
+<span id="floatingItems"></span> |
+<span id="floatingTotal"></span>
+</div>
 
-  <div id="cartItems"></div>
-  <h4 id="cartTotal">Total: ₹0</h4>
-
-<button id="checkoutBtn" onclick="goToCheckout()" class="checkout-btn">
-  Proceed to Checkout →
-</button>
+<a href="cart.html" style="
+color:white;
+background:black;
+padding:8px 15px;
+border-radius:5px;
+text-decoration:none;
+">
+VIEW CART
+</a>
 
 </div>
+
+<footer class="footer">
+
 
 
 <footer class="footer">
@@ -281,115 +202,11 @@
   </div>
 </footer>
 
+
+</div>
+<div id="toast" class="toast"></div>
 <!-- JAVASCRIPT -->
-<script>
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-}
 
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function updateItemTotal(select, price) {
-  const qty = select.value;
-  select.closest(".menu-card").querySelector(".total")
-    .textContent = "Total: ₹" + (qty * price);
-}
-
-function addToCart(name, price, btn) {
-  const qty = parseInt(btn.closest(".menu-card").querySelector(".qty").value);
-  let cart = getCart();
-
-  const existing = cart.find(item => item.name === name);
-  if (existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({ name, price, qty });
-  }
-
-  saveCart(cart);
-  updateCartBadge();
-}
-
-
-function renderCart() {
-  const cart = getCart();
-  const box = document.getElementById("cartItems");
-  const totalEl = document.getElementById("cartTotal");
-
-  if (!box || !totalEl) return;
-
-  box.innerHTML = "";
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    const itemTotal = item.price * item.qty;
-    total += itemTotal;
-
-    const div = document.createElement("div");
-    div.className = "cart-row";
-    div.innerHTML = `
-      <span>${item.name} × ${item.qty} = ₹${itemTotal}</span>
-      <button onclick="removeItem(${index})">❌</button>
-    `;
-    box.appendChild(div);
-  });
-
-  totalEl.textContent = "Total: ₹" + total;
-  updateCheckoutButton();
-
-}
-
-
-
-function removeItem(i) {
-  let cart = getCart();
-  cart.splice(i, 1);
-  saveCart(cart);
-  renderCart();
-  updateCartBadge();
-  updateCheckoutButton();
-
-}
-
-function updateCartBadge() {
-  const cart = getCart();
-  document.getElementById("cartCount").textContent =
-    cart.reduce((s, i) => s + i.qty, 0);
-}
-
-function updateCheckoutButton() {
-  const cart = getCart();
-  const btn = document.getElementById("checkoutBtn");
-
-  if (!btn) return;
-
-  if (cart.length === 0) {
-    btn.disabled = true;
-    btn.style.opacity = "0.5";
-    btn.style.cursor = "not-allowed";
-  } else {
-    btn.disabled = false;
-    btn.style.opacity = "1";
-    btn.style.cursor = "pointer";
-  }
-}
-
-function goToCheckout() {
-  const cart = getCart();
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-  window.location.href = "checkout.html";
-}
-
-renderCart();
-updateCartBadge();
-updateCheckoutButton();
-
-</script>
 
 <script>
 const toggleBtn = document.getElementById("darkToggle");
@@ -413,13 +230,13 @@ toggleBtn.addEventListener("click", () => {
 });
 </script>
 <script>
-function filterMenu(category) {
+function filterMenu(category,btn) {
   const cards = document.querySelectorAll(".menu-card");
   const tabs = document.querySelectorAll(".tab");
 
   tabs.forEach(tab => tab.classList.remove("active"));
 
-  event.target.classList.add("active");
+  btn.classList.add("active");
 
   cards.forEach(card => {
     if (category === "all" || card.dataset.category === category) {
@@ -434,14 +251,23 @@ function filterMenu(category) {
 
 
 <script src="assets/js/cart.js" defer></script>
-<script type="module" src="assets/js/firebase.js"></script>
-<script>
+<script type="module">
+  import "./assets/js/firebase.js";
   authGuard();
 </script>
 
+<script>
+document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
+  e.preventDefault();
 
-
-
+  try {
+    await logoutUser();
+    window.location.href = "login.html";
+  } catch (err) {
+    alert("Logout failed");
+  }
+});
+</script>
 
 </body>
 </html>

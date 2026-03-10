@@ -1,10 +1,4 @@
 bugs to be solved:-
 
-
-
-we have to refresh to show orders in your cart section
-all pages are loding without loging in
-first user should create account then only they should logedin
-
 firebase
 netlify

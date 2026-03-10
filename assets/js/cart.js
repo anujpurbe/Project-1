@@ -1,56 +1,126 @@
-/* ======================
-   CART STORAGE
-====================== */
-
-function getCart() {
+function getCart(){
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-function saveCart(cart) {
+function saveCart(cart){
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* ======================
-   CART BADGE (ALL PAGES)
-====================== */
+function updateCartBadge(){
+  let cart = getCart();
+  let total = cart.reduce((sum,item)=>sum+item.qty,0);
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartBadge();
-});
+  let badge = document.getElementById("cartCount");
+  if(badge) badge.textContent = total;
 
-function updateCartBadge() {
-  const badge = document.getElementById("cartCount");
-  if (!badge) return;
-
-  const cart = getCart();
-  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-  badge.textContent = totalQty;
+  updateFloatingCart();
 }
 
-/* ======================
-   MINI CART (OPTIONAL)
-====================== */
+function addItem(id,name,price,img){
+  let cart = getCart();
+  let item = cart.find(i=>i.id===id);
 
-function renderMiniCart() {
-  const box = document.getElementById("miniCartItems");
-  const totalEl = document.getElementById("miniCartTotal");
-  if (!box || !totalEl) return;
+  if(item){
+    item.qty++;
+  }else{
+   cart.push({id,name,price,qty:1,img});
+  }
 
-  const cart = getCart();
-  let total = 0;
-  box.innerHTML = "";
+saveCart(cart);
+updateMenuButtons();
+updateCartBadge();
 
-  if (cart.length === 0) {
-    box.innerHTML = "<p>Your cart is empty</p>";
-    totalEl.textContent = "Total: ₹0";
+showToast(name + " added to cart");
+}
+
+function increaseQty(id){
+  let cart = getCart();
+  let item = cart.find(i=>i.id===id);
+
+  if(item) item.qty++;
+
+  saveCart(cart);
+  updateMenuButtons();
+  updateCartBadge();
+}
+
+function decreaseQty(id){
+  let cart = getCart();
+  let item = cart.find(i=>i.id===id);
+
+  if(!item) return;
+
+  item.qty--;
+
+  if(item.qty<=0){
+    cart = cart.filter(i=>i.id!==id);
+  }
+
+  saveCart(cart);
+  updateMenuButtons();
+  updateCartBadge();
+}
+function showToast(message){
+let toast = document.getElementById("toast");
+
+if(!toast) return;
+
+toast.textContent = "✔ " + message;
+toast.classList.add("show");
+
+setTimeout(()=>{
+toast.classList.remove("show");
+},2000);
+}
+
+function updateMenuButtons(){
+  let cart = getCart();
+
+  document.querySelectorAll(".menu-item").forEach(card=>{
+    let id = parseInt(card.dataset.id);
+    let btn = card.querySelector(".cart-btn");
+
+    let item = cart.find(i=>i.id===id);
+
+    if(item){
+      btn.innerHTML = `
+        <button onclick="decreaseQty(${id})">-</button>
+        <span>${item.qty}</span>
+        <button onclick="increaseQty(${id})">+</button>
+      `;
+    }else{
+      let name = card.dataset.name;
+      let price = card.dataset.price;
+      let img = card.dataset.img;
+      btn.innerHTML = `
+        <button onclick="addItem(${id},'${name}',${price},'${img}')">ADD</button>
+      `;
+    }
+  });
+}
+
+function updateFloatingCart(){
+  let cart = getCart();
+
+  let bar = document.getElementById("floatingCart");
+
+  if(!bar) return;
+
+  if(cart.length===0){
+    bar.classList.remove("show");
     return;
   }
 
-  cart.forEach(item => {
-    total += item.price * item.qty;
-    box.innerHTML += `<p>${item.name} × ${item.qty}</p>`;
-  });
+  let items = cart.reduce((sum,i)=>sum+i.qty,0);
+  let total = cart.reduce((sum,i)=>sum+i.qty*i.price,0);
 
-  totalEl.textContent = "Total: ₹" + total;
+  bar.classList.add("show");
+
+  document.getElementById("floatingItems").textContent = items+" ITEMS";
+  document.getElementById("floatingTotal").textContent = "₹"+total;
 }
 
+document.addEventListener("DOMContentLoaded",()=>{
+  updateMenuButtons();
+  updateCartBadge();
+});

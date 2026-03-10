@@ -12,6 +12,10 @@
   <title>FoodieHub | Online Food Ordering</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ff5722">
+
+
 </head>
 
 <body>
@@ -21,10 +25,15 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
 <a href="menu.html">
-  Menu <span id="cartCount" class="cart-badge">0</span>
+Menu
+</a>
+
+<a href="cart.html" class="cart-link">
+🛒 Cart <span id="cartCount">0</span>
 </a>
     <a href="contact.html">Contact</a>
     <a href="login.html">Login</a>
+    <a href="#" id="logoutBtn">Logout</a>
      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
   🌙
 </button>
@@ -180,12 +189,46 @@ toggleBtn.addEventListener("click", () => {
 
 <script src="assets/js/cart.js" defer></script>
 
-<script type="module" src="assets/js/firebase.js"></script>
-<script>
+<script type="module">
+  import "./assets/js/firebase.js";
   authGuard();
 </script>
 
+<script>
+document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
+  e.preventDefault();
 
+  try {
+    await logoutUser();
+    window.location.href = "login.html";
+  } catch (err) {
+    alert("Logout failed");
+  }
+});
+</script>
 
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch(err => console.log("SW error:", err));
+  });
+}
+</script>
+
+<script>
+
+function updateCartCount(){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+document.getElementById("cart-count").innerText = cart.length;
+
+}
+
+updateCartCount();
+
+</script>
 </body>
 </html>

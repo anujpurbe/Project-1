@@ -9,6 +9,9 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff5722">
+
 </head>
 <body>
 
@@ -18,10 +21,13 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
 <a href="menu.html">
-  Menu <span id="cartCount" class="cart-badge">0</span>
+Menu
 </a>
+
     <a href="contact.html">Contact</a>
     <a href="login.html" class="active">Login</a>
+    <a href="#" id="logoutBtn">Logout</a>
+
      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
   🌙
 </button>
@@ -41,12 +47,12 @@
       <form onsubmit="handleLogin(event)">
         <h2 class="form-title">Login</h2>
 
-        <input type="email" placeholder="Email" required>
+        <input type="email" id="email" placeholder="Email" required>
 
         <div class="password-box">
-          <input type="password" id="loginPass" placeholder="Password" required>
+          <input type="password" id="password" placeholder="Password" required>
           <span class="toggle-password"
-                onclick="togglePassword('loginPass', this)">SHOW</span>
+                onclick="togglePassword('password', this)">SHOW</span>
         </div>
 
         <button type="submit">Login</button>
@@ -64,7 +70,8 @@
         <h2 class="form-title">Sign Up</h2>
 
         <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email" required>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+
 
         <div class="password-box">
           <input type="password" id="signupPass" placeholder="Password" required>
@@ -129,16 +136,36 @@ function showLogin() {
   document.getElementById("loginForm").style.display = "block";
 }
 
-function handleSignup(e) {
+async function handleSignup(e) {
   e.preventDefault();
-  alert("Account created successfully!");
-  showLogin();
+
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPass").value;
+
+  try {
+    await signupUser(email, password);
+    alert("Account created successfully!");
+    showLogin();
+  } catch (err) {
+    alert(err.message);
+  }
 }
 
-function handleLogin(e) {
+
+async function handleLogin(e) {
   e.preventDefault();
-  window.location.href = "index.html";
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await loginUser(email, password);
+    window.location.href = "index.html";
+  } catch (err) {
+    alert(err.message);
+  }
 }
+
 </script>
 
 <script>
@@ -179,23 +206,19 @@ toggleBtn.addEventListener("click", () => {
 <script src="assets/js/cart.js" defer></script>
 
 <script type="module" src="assets/js/firebase.js"></script>
+
 <script>
-  document.getElementById("loginForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
+  e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    try {
-      await loginUser(email, password);
-      // ✅ MANUAL REDIRECT
-      window.location.href = "index.html";
-    } catch (err) {
-      alert("Wrong email or password");
-    }
-  });
+  try {
+    await logoutUser();
+    window.location.href = "login.html";
+  } catch (err) {
+    alert("Logout failed");
+  }
+});
 </script>
-
 
 </body>
 </html>

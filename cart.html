@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart | FoodieHub</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+.cart-page{
+max-width:800px;
+margin:40px auto;
+padding:20px;
+}
+
+.cart-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #ddd;
+padding:15px 0;
+}
+
+.qty-controls button{
+padding:5px 12px;
+font-size:16px;
+cursor:pointer;
+}
+
+.checkout-btn{
+margin-top:20px;
+padding:12px 20px;
+background:#ff5722;
+color:white;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="main-navbar">
+  <div class="nav-inner">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+<a href="menu.html">
+Menu
+</a>
+
+<a href="cart.html" class="cart-link">
+🛒 Cart <span id="cartCount">0</span>
+</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="#" id="logoutBtn">Logout</a>
+     <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+  </div>
+</nav>
+<header class="header">
+<h1>Your Cart</h1>
+</header>
+
+<section class="cart-page">
+
+<div id="cartItems"></div>
+
+<h3 id="cartTotal">Total: ₹0</h3>
+
+<button onclick="goCheckout()" class="checkout-btn">
+Proceed to Checkout
+</button>
+
+</section>
+  <!-- Footer -->
+<footer class="footer">
+  <p>© 2026 FoodieHub Restaurant. All rights reserved.</p>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://www.snapchat.com/" target="_blank" aria-label="Snapchat">
+      <i class="fab fa-snapchat-ghost"></i>
+    </a>
+  </div>
+</footer>
+<script>
+
+function getCart(){
+return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart){
+localStorage.setItem("cart",JSON.stringify(cart));
+}
+
+function increaseQty(id){
+let cart = getCart();
+let item = cart.find(i=>i.id===id);
+
+if(item) item.qty++;
+
+saveCart(cart);
+renderCart();
+updateBadge();
+}
+
+function decreaseQty(id){
+let cart = getCart();
+let item = cart.find(i=>i.id===id);
+
+if(!item) return;
+
+item.qty--;
+
+if(item.qty<=0){
+cart = cart.filter(i=>i.id!==id);
+}
+
+saveCart(cart);
+renderCart();
+updateBadge();
+}
+
+function updateBadge(){
+let cart = getCart();
+let total = cart.reduce((s,i)=>s+i.qty,0);
+document.getElementById("cartCount").textContent = total;
+}
+
+function renderCart(){
+
+let cart = getCart();
+let box = document.getElementById("cartItems");
+let total = 0;
+
+box.innerHTML="";
+
+cart.forEach(item=>{
+
+let itemTotal = item.price * item.qty;
+total += itemTotal;
+
+let row = document.createElement("div");
+row.className="cart-row";
+
+row.innerHTML=`
+
+<div class="cart-left">
+<img src="${item.img}" class="cart-img">
+
+<div>
+<h4>${item.name}</h4>
+
+<div class="qty-controls">
+<button onclick="decreaseQty(${item.id})">−</button>
+<span>${item.qty}</span>
+<button onclick="increaseQty(${item.id})">+</button>
+</div>
+
+</div>
+
+</div>
+
+<p class="item-price">₹${itemTotal}</p>
+
+`;
+
+box.appendChild(row);
+
+});
+
+document.getElementById("cartTotal").textContent = "Total: ₹"+total;
+
+updateBadge();
+}
+
+function goCheckout(){
+
+let cart = getCart();
+
+if(cart.length===0){
+alert("Your cart is empty!");
+return;
+}
+
+window.location.href="checkout.html";
+
+}
+
+renderCart();
+
+</script>
+<script>
+const toggleBtn = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+</body>
+</html>

@@ -69,13 +69,13 @@ http://localhost:5000
 Firebase Hosted Site:
 
 ```
-https://your-project-name.web.app
+https://food-ordering-login-50ad9.web.app
 ```
 
 ---
 
 ## 👨‍💻 Author
 
-Developed by **Rahul Shah**
+Developed by **Anuj Purbe**
 
 ---
