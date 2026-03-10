@@ -53,7 +53,7 @@ git clone https://github.com/YOUR_USERNAME/foodiehub.git
 Open the project folder and start a local server:
 
 ```
-firebase serve
+firebase server
 ```
 
 Then open:
