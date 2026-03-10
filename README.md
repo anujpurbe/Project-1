@@ -30,17 +30,17 @@ Users can browse the menu, add items to the cart, and proceed to checkout.
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Menu Page
-
-![Menu](assets/images/menu-preview.png)
+<p align="center">
+<img src="assets/images/menu-preview.png" width="700">
+</p>
 
 ### Cart Page
-
-![Cart](assets/images/cart-preview.png)
-
----
+<p align="center">
+<img src="assets/images/cart-preview.png" width="700">
+</p>
 
 ## ⚙ How to Run Locally
 
