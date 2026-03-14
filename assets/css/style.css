@@ -1492,3 +1492,10 @@ width:100%;
 }
 
 }
+
+.error{
+color:red;
+font-size:13px;
+display:block;
+margin-bottom:10px;
+}

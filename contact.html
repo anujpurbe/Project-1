@@ -68,10 +68,18 @@ Menu
     <h3 style="margin-top: 30px;"><b>Send Us a Message</b></h3>
 
 <form class="contact-form" onsubmit="return validateForm()">
+
 <input type="text" id="name" placeholder="Enter your name" required>
+<small id="nameError" class="error"></small>
+
 <input type="email" id="email" placeholder="Enter your email" required>
+<small id="emailError" class="error"></small>
+
 <textarea id="message" placeholder="Enter your message" rows="8" required></textarea>
+<small id="messageError" class="error"></small>
+
 <button type="submit" class="btn">Send Message</button>
+
 </form>
 
     <h3 style="margin-top: 40px;">Find Us Here</h3>
@@ -201,5 +209,47 @@ return false;
 return true;
 }
 </script>
+
+function validateForm(){
+
+let name=document.getElementById("name").value.trim()
+let email=document.getElementById("email").value.trim()
+let message=document.getElementById("message").value.trim()
+
+let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+
+let valid=true
+
+// Name validation
+if(name.length<3){
+document.getElementById("nameError").innerText="Name must be at least 3 characters"
+valid=false
+}else{
+document.getElementById("nameError").innerText=""
+}
+
+// Email validation
+if(!email.match(emailPattern)){
+document.getElementById("emailError").innerText="Enter a valid email"
+valid=false
+}else{
+document.getElementById("emailError").innerText=""
+}
+
+// Message validation
+if(message.length<10){
+document.getElementById("messageError").innerText="Message must be at least 10 characters"
+valid=false
+}else{
+document.getElementById("messageError").innerText=""
+}
+
+if(valid){
+alert("Message sent successfully!")
+}
+
+return valid
+
+}
 </body>
 </html>
