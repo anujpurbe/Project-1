@@ -124,3 +124,42 @@ document.addEventListener("DOMContentLoaded",()=>{
   updateMenuButtons();
   updateCartBadge();
 });
+
+/* Search Function */
+
+function searchFood(){
+
+let input=document.getElementById("searchInput").value.toLowerCase();
+let items=document.querySelectorAll(".menu-item");
+
+items.forEach(function(item){
+
+let name=item.dataset.name.toLowerCase();
+
+if(name.includes(input)){
+item.style.display="block";
+}else{
+item.style.display="none";
+}
+
+});
+
+}
+
+/* Category Filter */
+
+function filterFood(category){
+
+let items=document.querySelectorAll(".menu-item");
+
+items.forEach(function(item){
+
+if(category==="all" || item.dataset.category===category){
+item.style.display="block";
+}else{
+item.style.display="none";
+}
+
+});
+
+}

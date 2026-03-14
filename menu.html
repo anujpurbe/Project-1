@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ff5722">
+<!-- Bootstrap UI Framework -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
@@ -48,16 +51,26 @@ Menu
 <section class="menu">
   <h2>Our Popular Menu</h2>
  
-<button class="tab active" onclick="filterMenu('all',this)">All</button>
-<button class="tab" onclick="filterMenu('starter',this)">Starters</button>
-<button class="tab" onclick="filterMenu('main',this)">Main Course</button>
-<button class="tab" onclick="filterMenu('dessert',this)">Desserts</button>
+<div class="menu-controls">
+
+<input type="text" id="searchInput" placeholder="Search food..." onkeyup="searchFood()">
+
+<div class="filter-buttons">
+
+<button onclick="filterFood('all')">All</button>
+<button onclick="filterFood('starter')">Starter</button>
+<button onclick="filterFood('main')">Main</button>
+<button onclick="filterFood('dessert')">Dessert</button>
+
+</div>
+
+</div>
 
 
-  <div class="menu-items">
+<div class="menu-items">
 
 <!-- 1 -->
-<div class="menu-card menu-item" data-id="1" data-name="Chicken Biryani" data-price="180" data-category="main" data-img="assets/images/biryani.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-id="1" data-name="Chicken Biryani" data-price="180" data-category="main" data-img="assets/images/biryani.jpg">
 <img src="assets/images/biryani.jpg">
 <h3>Chicken Biryani</h3>
 <p class="price">₹180</p>
@@ -65,7 +78,7 @@ Menu
 </div>
 
 <!-- 2 -->
-<div class="menu-card menu-item" data-id="2" data-name="Cheese Pizza" data-price="230" data-category="starter" data-img="assets/images/pizza.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-aos-delay="100" data-id="2" data-name="Cheese Pizza" data-price="230" data-category="starter" data-img="assets/images/pizza.jpg">
 <img src="assets/images/pizza.jpg">
 <h3>Cheese Pizza</h3>
 <p class="price">₹230</p>
@@ -73,7 +86,7 @@ Menu
 </div>
 
 <!-- 3 -->
-<div class="menu-card menu-item" data-id="3" data-name="Veg Burger" data-price="120" data-category="starter" data-img="assets/images/burger.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-aos-delay="200" data-id="3" data-name="Veg Burger" data-price="120" data-category="starter" data-img="assets/images/burger.jpg">
 <img src="assets/images/burger.jpg">
 <h3>Veg Burger</h3>
 <p class="price">₹120</p>
@@ -81,7 +94,7 @@ Menu
 </div>
 
 <!-- 4 -->
-<div class="menu-card menu-item" data-id="4" data-name="White Sauce Pasta" data-price="200" data-category="main" data-img="assets/images/pasta.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-aos-delay="300" data-id="4" data-name="White Sauce Pasta" data-price="200" data-category="main" data-img="assets/images/pasta.jpg">
 <img src="assets/images/pasta.jpg">
 <h3>White Sauce Pasta</h3>
 <p class="price">₹200</p>
@@ -89,7 +102,7 @@ Menu
 </div>
 
 <!-- 5 -->
-<div class="menu-card menu-item" data-id="5" data-name="Veg Noodles" data-price="150" data-category="main" data-img="assets/images/noodles.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-aos-delay="400" data-id="5" data-name="Veg Noodles" data-price="150" data-category="main" data-img="assets/images/noodles.jpg">
 <img src="assets/images/noodles.jpg">
 <h3>Veg Noodles</h3>
 <p class="price">₹150</p>
@@ -97,7 +110,7 @@ Menu
 </div>
 
 <!-- 6 -->
-<div class="menu-card menu-item" data-id="6" data-name="Fried Rice" data-price="160" data-category="main" data-img="assets/images/friedrice.jpg">
+<div class="menu-card menu-item" data-aos="fade-up" data-aos-delay="500" data-id="6" data-name="Fried Rice" data-price="160" data-category="main" data-img="assets/images/friedrice.jpg">
 <img src="assets/images/friedrice.jpg">
 <h3>Fried Rice</h3>
 <p class="price">₹160</p>
@@ -105,7 +118,7 @@ Menu
 </div>
 
 <!-- 7 -->
-<div class="menu-card menu-item" data-id="7" data-name="Grilled Sandwich" data-price="110" data-category="starter" data-img="assets/images/sandwich.jpg">
+<div class="menu-card menu-item" data-aos="zoom-in" data-aos-delay="100" data-id="7" data-name="Grilled Sandwich" data-price="110" data-category="starter" data-img="assets/images/sandwich.jpg">
 <img src="assets/images/sandwich.jpg">
 <h3>Grilled Sandwich</h3>
 <p class="price">₹110</p>
@@ -113,7 +126,7 @@ Menu
 </div>
 
 <!-- 8 -->
-<div class="menu-card menu-item" data-id="8" data-name="Veg Momos" data-price="140" data-category="starter" data-img="assets/images/momos.jpg">
+<div class="menu-card menu-item" data-aos="zoom-in" data-aos-delay="200" data-id="8" data-name="Veg Momos" data-price="140" data-category="starter" data-img="assets/images/momos.jpg">
 <img src="assets/images/momos.jpg">
 <h3>Veg Momos</h3>
 <p class="price">₹140</p>
@@ -121,7 +134,7 @@ Menu
 </div>
 
 <!-- 9 -->
-<div class="menu-card menu-item" data-id="9" data-name="Paneer Roll" data-price="130" data-category="starter" data-img="assets/images/roll.jpg">
+<div class="menu-card menu-item" data-aos="zoom-in" data-aos-delay="300" data-id="9" data-name="Paneer Roll" data-price="130" data-category="starter" data-img="assets/images/roll.jpg">
 <img src="assets/images/roll.jpg">
 <h3>Paneer Roll</h3>
 <p class="price">₹130</p>
@@ -129,7 +142,7 @@ Menu
 </div>
 
 <!-- 10 -->
-<div class="menu-card menu-item" data-id="10" data-name="Vanilla Ice Cream" data-price="90" data-category="dessert" data-img="assets/images/icecream.jpg">
+<div class="menu-card menu-item" data-aos="flip-left" data-aos-delay="100" data-id="10" data-name="Vanilla Ice Cream" data-price="90" data-category="dessert" data-img="assets/images/icecream.jpg">
 <img src="assets/images/icecream.jpg">
 <h3>Vanilla Ice Cream</h3>
 <p class="price">₹90</p>
@@ -137,7 +150,7 @@ Menu
 </div>
 
 <!-- 11 -->
-<div class="menu-card menu-item" data-id="11" data-name="Paneer Butter Masala" data-price="220" data-category="main" data-img="assets/images/paneer-butter-masala.jpg">
+<div class="menu-card menu-item" data-aos="flip-left" data-aos-delay="200" data-id="11" data-name="Paneer Butter Masala" data-price="220" data-category="main" data-img="assets/images/paneer-butter-masala.jpg">
 <img src="assets/images/paneer-butter-masala.jpg">
 <h3>Paneer Butter Masala</h3>
 <p class="price">₹220</p>
@@ -145,7 +158,7 @@ Menu
 </div>
 
 <!-- 12 -->
-<div class="menu-card menu-item" data-id="12" data-name="Chocolate Brownie" data-price="150" data-category="dessert" data-img="assets/images/brownie.jpg">
+<div class="menu-card menu-item" data-aos="flip-left" data-aos-delay="300" data-id="12" data-name="Chocolate Brownie" data-price="150" data-category="dessert" data-img="assets/images/brownie.jpg">
 <img src="assets/images/brownie.jpg">
 <h3>Chocolate Brownie</h3>
 <p class="price">₹150</p>
@@ -266,6 +279,15 @@ document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
   } catch (err) {
     alert("Logout failed");
   }
+});
+</script>
+<!-- AOS Animation Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init({
+duration:1000,
+once:true
 });
 </script>
 
