@@ -163,3 +163,45 @@ item.style.display="none";
 });
 
 }
+
+function validateForm(){
+
+let name=document.getElementById("name").value.trim()
+let email=document.getElementById("email").value.trim()
+let message=document.getElementById("message").value.trim()
+
+let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+
+let valid=true
+
+// Name validation
+if(name.length<3){
+document.getElementById("nameError").innerText="Name must be at least 3 characters"
+valid=false
+}else{
+document.getElementById("nameError").innerText=""
+}
+
+// Email validation
+if(!email.match(emailPattern)){
+document.getElementById("emailError").innerText="Enter a valid email"
+valid=false
+}else{
+document.getElementById("emailError").innerText=""
+}
+
+// Message validation
+if(message.length<10){
+document.getElementById("messageError").innerText="Message must be at least 10 characters"
+valid=false
+}else{
+document.getElementById("messageError").innerText=""
+}
+
+if(valid){
+alert("Message sent successfully!")
+}
+
+return valid
+
+}
