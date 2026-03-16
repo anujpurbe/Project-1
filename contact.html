@@ -190,18 +190,26 @@ once:true
 });
 </script>
 <script>
-function validateForm(){
+function validateForm() {
 
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+const message = document.getElementById("message").value.trim();
 
-if(name.length<3){
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(name.length < 3){
 alert("Name must be at least 3 characters");
 return false;
 }
 
-if(!email.includes("@")){
-alert("Enter a valid email");
+if(!emailPattern.test(email)){
+alert("Enter a valid email address");
+return false;
+}
+
+if(message.length < 10){
+alert("Message must be at least 10 characters");
 return false;
 }
 

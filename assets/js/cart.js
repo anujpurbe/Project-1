@@ -146,6 +146,12 @@ item.style.display="none";
 
 }
 
+
+if(cart.length === 0){
+document.getElementById("cartItems").innerHTML =
+"<p>Your cart is empty 🛒</p>";
+}
+
 /* Category Filter */
 
 function filterFood(category){
