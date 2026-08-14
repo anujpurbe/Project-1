@@ -1,81 +1,40 @@
-# 🍽 FoodieHub – Online Food Ordering Website
+<div align="center">
 
-FoodieHub is a modern food ordering web application inspired by platforms like **Swiggy** and **Zomato**.
-Users can browse the menu, add items to the cart, and proceed to checkout.
+  <h1>🍕 FoodieHub — Food Ordering Web Platform</h1>
 
----
+  <p><strong>Interactive web application for online food ordering featuring catalog browsing and modern UI.</strong></p>
 
-## 🚀 Features
+  <p>
+    <a href="https://anujpurbe.github.io/FoodieHub-Food-Ordering-Website/"><img src="https://img.shields.io/badge/Live_Website-GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white" alt="Live Website" /></a>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  </p>
 
-* 🔐 Firebase Authentication (Login / Logout)
-* 🍔 Interactive Food Menu
-* 🛒 Swiggy-style Cart System (+ / − buttons)
-* 📦 Floating Cart Bar
-* 📑 Separate Cart Page
-* 🌙 Dark Mode Toggle
-* 📱 Responsive Design
-* 📲 PWA Support (Installable Web App)
-* ☁ Firebase Hosting Deployment
+</div>
 
 ---
 
-## 🖥 Technologies Used
+## 📖 Overview
 
-* HTML5
-* CSS3
-* JavaScript
-* Firebase Authentication
-* Firebase Hosting
-* LocalStorage (Cart System)
+**FoodieHub** is a web-based food ordering platform designed to provide an intuitive user journey for browsing food menus, filtering items by category, adding items to cart, and calculating order totals seamlessly.
 
 ---
 
-## Screenshots
+## ✨ Key Features
 
-### Menu Page
-<p align="center">
-<img src="assets/images/menu-preview.png" width="700">
-</p>
-
-### Cart Page
-<p align="center">
-<img src="assets/images/cart-preview.png" width="700">
-</p>
-
-## ⚙ How to Run Locally
-
-Clone the repository:
-
-```
-git clone https://github.com/anujpurbe/foodiehub.git
-```
-
-Open the project folder and start a local server:
-
-```
-firebase server
-```
-
-Then open:
-
-```
-http://localhost:5000
-```
+- 🍔 **Interactive Menu Catalog:** Filter dishes by categories (Pizza, Burgers, Drinks, Desserts).
+- 🛒 **Cart Management:** Add/remove items, adjust quantities, and calculate subtotal dynamically.
+- 📱 **Responsive UI:** Tailored layout for mobile devices, tablets, and desktop browsers.
 
 ---
 
-## 🌐 Live Demo
+## 🔗 Live Demo
 
-Firebase Hosted Site:
-
-```
-https://food-ordering-login-50ad9.web.app
-```
+Experience the live app here: [https://anujpurbe.github.io/FoodieHub-Food-Ordering-Website/](https://anujpurbe.github.io/FoodieHub-Food-Ordering-Website/)
 
 ---
 
-## 👨‍💻 Author
-
-Developed by **Anuj Purbe**
-
----
+<div align="center">
+  Developed by <a href="https://github.com/anujpurbe">Anuj Purbe</a>
+</div>
